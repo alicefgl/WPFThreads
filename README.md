@@ -1,3 +1,5 @@
+# WPFThreads
+
 Consegna dell'esercizio:
 
 Si vuole visualizzare un conteggio sfruttando le istruzioni multithreads messe a disposizione dal linguaggio C#.
