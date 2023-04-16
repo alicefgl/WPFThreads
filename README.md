@@ -14,7 +14,7 @@ Si preveda un pulsante "Start" per far partire i conteggi che rimanga disattivat
 
 Opzionale: visualizzare il conteggio totale tramite una ProgressBar WPF
 
-# Diario di bordo WPF Threads
+# Diario di bordo WPFThreads
 
 ## Inizio 13 ottobre 2022
 ## Introduzione a WPF
@@ -80,7 +80,9 @@ Caratteristiche dei semafori:
 
 CountdownEvent => semaforo
 
-```CountdownEvent semaforo = new CountdownEvent (2);```
+```
+CountdownEvent semaforo = new CountdownEvent (2);
+```
 
 Abbiamo inizializzato il semaforo fuori dai metodi per poi chiamare il costruttore all’interno del metodo richiamato quando si preme il bottone.
 
@@ -96,7 +98,8 @@ Non è possibile utilizzare liberamente un semaforo all’interno di un metodo r
 
 Creazione thread semaforo:
 
-```private void attendi(){
+```
+private void attendi(){
 	semaforo.Wait();
 }
 ```
@@ -104,7 +107,8 @@ Creazione thread semaforo:
 Per creare un nuovo thread si deve creare un nuovo metodo, siccome gli altri metodi (thread) non ritornano alcun valore (void), bisogna trovare un modo per farli comunicare tra di loro.
 Dispatcher.Invoke => aspetta (wait), quando i thread hanno fatto Signal (hanno segnalato il termine della loro esecuzione) aggiorna i due contatori.
 
-```private void attendi(){
+```
+private void attendi(){
 	semaforo.Wait();
 	Dispatcher.Invoke(
 		() =>
@@ -134,7 +138,8 @@ inizializzare con il codice seguente poi può partire
 		};
 	}
 thread3.Start();
-}```
+}
+```
 
 A questo punto il metodo “attendi” non è più necessario, il vantaggio è la leggibilità del codice.
 
@@ -143,3 +148,35 @@ Il semaforo usato in precedenza viene eliminato, quindi si generano errori. Il b
 btnGo.IsEnabled = false;
 
 Tramite questo comando il pulsante viene disabilitato momentaneamente. L’abbiamo scritto all’interno di Button_Click .
+
+## 19/03/2023
+## ProgressBar
+
+VIsualizzare il conteggio progressivo dei vari threads tramite una ProgressBar.
+
+```
+<ProgressBar x:Name="prgBar1"></ProgressBar>
+```
+
+Assegnamo un nome alla ProgressBar Tramite x:Name.
+
+```
+<ProgressBar x:Name="prgBar1" Height="50" Width="1000" Minimum="0" Maximum="3000"></ProgressBar>
+```
+
+Si specifica la lunghezza, la lunghezza, il valore minimo e quello massimo della ProgressBar. Questa modifica si esegue lato xaml.
+
+```
+pegBar1.Maximum += (GIRI1 + GIRI2);	//lato C#
+```
+
+Il massimo valore che la ProgressBar può rappresentare si adatta al numero massimo di giri eseguiti da entrambi i thread (GIRI1 e GIRI2). Questo si scrive all’interno della funzione che viene richiamata quando si preme un bottone (evento).
+Abbiamo notato che nonostante questo vincolo rimaneva comunque uno spazio vuoto, per questo lato xaml abbiamo aggiornato il massimo inizializzandolo a 0.
+
+## 16/03/2023
+## Aggiornamenti WPFThreads
+
+Cartella zippata -> Proprietà -> Annulla blocco (i file che vengono dalla rete non vengono più bloccati come tali, questo può essere utile per evitare complicazioni con Visual Studio).
+Aggiungiamo un thread agli altri due già esistenti, modifichiamo i tempi di esecuzione ed il conteggio che i vari thread eseguiranno.
+Aggiungiamo poi un contatore che tenga conto del totale degli altri contatori ed una progress bar che permette di visualizzare l’andamento del totale stabilendo un massimo.
+Prima di consegnare eliminiamo .vs , bin e obj.
