@@ -23,18 +23,18 @@ L'ultima versione di Dotnet è .Net7
 
 <img src="images\creazione progetto WPF.png" width="350" title="creazione progetto WPF">
 
-<img src="images\dotnet6.png" width="350" title="creazione progetto WPF">
+<img src="images\dotnet6.png" width="350" title="dotnet6">
 
 Applicazione WPF (.net framework)
 nome delle soluzioni: cognome.nome.4i.primoWPF
 Ogni componente xaml ha una serie di eventi che gli corrispondono (Proprietà->Fulmine).
 Questa linea di codice è contenuta nella pagina C# relativa al documento xaml:
 
-<img src="images\starterWPF.png" width="350" title="creazione progetto WPF">
+<img src="images\starter WPF.png" width="350" title="starter WPF">
 
 Richiamo della funzione nella pagina xaml:
 
-<img src="images\gestore di eventi.png" width="350" title="creazione progetto WPF">
+<img src="images\gestore di eventi.png" width="350" title="gestore di eventi">
 
 ## 02/02/2023
 ## Introduzione a WPF
@@ -50,7 +50,7 @@ Si crea una cartella per ogni progetto: la cartella conterrà oltretutto il prog
 
 Tasto destro sulla barra nera in alto a destra->spuntare “Compilazione” (aggiunge due tasti all’interfaccia di visual studio, in questo modo si crea un file eseguibile. Questo comporta che quando si avvia il programma scritto, la compilazione potrebbe richiedere più tempo risultando più pesante. Il pulsante Compilazione può essere utile per eseguire il codice senza lanciare il programma a scopo di verificare che esso non presenti errori. Potrebbe essere utile altrimenti compilare solo il progetto corrente).
 
-<img src="images\modalita di compilazione.png" width="350" title="creazione progetto WPF">
+<img src="images\modalita di compilazione.png" width="350" title="modalita di compilazione">
 
 In xml ogni oggetto è chiuso all’interno di un tag di apertura ed uno di chiusura. All’interno di ogni tag (tra le due parentesi acute) vi sono gli attributi.
 
