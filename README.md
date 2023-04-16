@@ -39,16 +39,16 @@ Richiamo della funzione nella pagina xaml:
 ## 02/02/2023
 ## Introduzione a WPF
 
-MAUI -> Multiple Architectal User Interface: è molto vicina a xamarin ma riprende la programmazione Windows.
-WPF introduce per la prima volta il sistema di programmazione in Xamarin: esso risulta molto minimale e perciò anche semplice da imparare. E’ un linguaggio strutturato che descrive le User Interface tramite (ad esempio) delle grid.
+**MAUI** -> Multiple Architectal User Interface: è molto vicina a xamarin ma riprende la programmazione Windows.
+WPF introduce per la prima volta il sistema di programmazione in **Xamarin**: esso risulta molto minimale e perciò anche semplice da imparare. E’ un linguaggio strutturato che descrive le User Interface tramite (ad esempio) delle grid.
 
 Per creare il nostro progetto abbiamo utilizzato .NET 6.0 (più facilmente supportato).
 
-Pulsante destro sulla soluzione->apri cartella in esplora file (serve per sapere dove si trova il progetto nel caso in cui, ad esempio, si perda).
+~~Pulsante destro sulla soluzione~~-> apri cartella in esplora file (serve per sapere dove si trova il progetto nel caso in cui, ad esempio, si perda).
 
 Si crea una cartella per ogni progetto: la cartella conterrà oltretutto il progetto stesso (con estensione csproj).
 
-Tasto destro sulla barra nera in alto a destra->spuntare “Compilazione” (aggiunge due tasti all’interfaccia di visual studio, in questo modo si crea un file eseguibile. Questo comporta che quando si avvia il programma scritto, la compilazione potrebbe richiedere più tempo risultando più pesante. Il pulsante Compilazione può essere utile per eseguire il codice senza lanciare il programma a scopo di verificare che esso non presenti errori. Potrebbe essere utile altrimenti compilare solo il progetto corrente).
+~~Tasto destro sulla barra nera in alto a destra~~ -> spuntare “Compilazione” (aggiunge due tasti all’interfaccia di visual studio, in questo modo si crea un file eseguibile. Questo comporta che quando si avvia il programma scritto, la compilazione potrebbe richiedere più tempo risultando più pesante. Il pulsante Compilazione può essere utile per eseguire il codice senza lanciare il programma a scopo di verificare che esso non presenti errori. Potrebbe essere utile altrimenti compilare solo il progetto corrente).
 
 <img src="images\modalita di compilazione.png" width="350" title="modalita di compilazione">
 
@@ -56,7 +56,7 @@ In xml ogni oggetto è chiuso all’interno di un tag di apertura ed uno di chiu
 
 E’ possibile vedere in modo specifico le proprietà di un attributo cliccando sul pulsante della chiave inglese e selezionando l’attributo. Le proprietà hanno un tipo che ha lo stesso nome del tag.
 
-Disponi per Nome->WindowStartupLocation->Center of screen (posiziona l’intera finestra al centro dello schermo, disponi per nome ordina le proprietà in base al loro nome in ordine alfabetico).
+~~Disponi per Nome->WindowStartupLocation->Center of screen~~ (posiziona l’intera finestra al centro dello schermo, disponi per nome ordina le proprietà in base al loro nome in ordine alfabetico).
 
 La sintassi degli attributi di sml è molto precisa, presenta una struttura semplice del tipo nome=”valore”.
 
@@ -69,7 +69,7 @@ A un certo punto uno dei due contatori si blocca, mentre l’altro riesce a term
 
 Abbiamo constatato che non si tratta di un problema di conteggio in quanto uno dei due threads riesce a completare l’azione.
 
-E’ necessario un meccanismo che faccia partire i due contatori per poi eseguire un controllo (semaforo) che entrambi abbiano finito e passare alle prossime operazioni.
+E’ necessario un meccanismo che faccia partire i due contatori per poi eseguire un controllo (~~semaforo~~) che entrambi abbiano finito e passare alle prossime operazioni.
 
 Il problema è quindi il fatto che il programma si ferma troppo presto quindi uno dei due processi non riesce a terminare l’operazione.
 
@@ -96,7 +96,7 @@ Abbiamo notato che l'esecuzione dell’intero programma si bloccava, abbiamo per
 
 Non è possibile utilizzare liberamente un semaforo all’interno di un metodo richiamato a un evento => anche per il semaforo bisogna creare un nuovo thread.
 
-Creazione thread semaforo:
+~~Creazione thread semaforo:~~
 
 ```
 private void attendi(){
@@ -143,7 +143,7 @@ thread3.Start();
 
 A questo punto il metodo “attendi” non è più necessario, il vantaggio è la leggibilità del codice.
 
-Cosa succede se si clicca un’altra volta il bottone?
+~~Cosa succede se si clicca un’altra volta il bottone?~~
 Il semaforo usato in precedenza viene eliminato, quindi si generano errori. Il bottone non può essere cliccato più volte quando si arriva in fondo ai threads.
 btnGo.IsEnabled = false;
 
@@ -170,7 +170,7 @@ Si specifica la lunghezza, la lunghezza, il valore minimo e quello massimo della
 pegBar1.Maximum += (GIRI1 + GIRI2);	//lato C#
 ```
 
-Il massimo valore che la ProgressBar può rappresentare si adatta al numero massimo di giri eseguiti da entrambi i thread (GIRI1 e GIRI2). Questo si scrive all’interno della funzione che viene richiamata quando si preme un bottone (evento).
+Il massimo valore che la ProgressBar può rappresentare si adatta al numero massimo di giri eseguiti da ~~entrambi~~ i thread (GIRI1 e GIRI2). Questo si scrive all’interno della funzione che viene richiamata quando si preme un bottone (evento).
 Abbiamo notato che nonostante questo vincolo rimaneva comunque uno spazio vuoto, per questo lato xaml abbiamo aggiornato il massimo inizializzandolo a 0.
 
 ## 16/03/2023
