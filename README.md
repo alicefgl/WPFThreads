@@ -14,4 +14,40 @@ Si preveda un pulsante "Start" per far partire i conteggi che rimanga disattivat
 
 Opzionale: visualizzare il conteggio totale tramite una ProgressBar WPF
 
+# Diario di bordo WPF Threads
+
+## Inizio 13 ottobre 2022
+## Introduzione a WPF
+
+L'ultima versione di Dotnet è .Net7
+
 <img src="images\creazione progetto WPF.png" width="350" title="creazione progetto WPF">
+
+<img src="images\dotnet6.png" width="350" title="creazione progetto WPF">
+
+Applicazione WPF (.net framework)
+nome delle soluzioni: cognome.nome.4i.primoWPF
+Ogni componente xaml ha una serie di eventi che gli corrispondono (Proprietà->Fulmine).
+Questa linea di codice è contenuta nella pagina C# relativa al documento xaml:
+
+<img src="images\starterWPF.png" width="350" title="creazione progetto WPF">
+
+Richiamo della funzione nella pagina xaml:
+
+<img src="images\gestore di eventi.png" width="350" title="creazione progetto WPF">
+
+## 02/02/2023
+## Introduzione a WPF
+
+MAUI -> Multiple Architectal User Interface: è molto vicina a xamarin ma riprende la programmazione Windows.
+WPF introduce per la prima volta il sistema di programmazione in Xamarin: esso risulta molto minimale e perciò anche semplice da imparare. E’ un linguaggio strutturato che descrive le User Interface tramite (ad esempio) delle grid.
+
+Per creare il nostro progetto abbiamo utilizzato .NET 6.0 (più facilmente supportato).
+
+Pulsante destro sulla soluzione->apri cartella in esplora file (serve per sapere dove si trova il progetto nel caso in cui, ad esempio, si perda).
+
+Si crea una cartella per ogni progetto: la cartella conterrà oltretutto il progetto stesso (con estensione csproj).
+
+Tasto destro sulla barra nera in alto a destra->spuntare “Compilazione” (aggiunge due tasti all’interfaccia di visual studio, in questo modo si crea un file eseguibile. Questo comporta che quando si avvia il programma scritto, la compilazione potrebbe richiedere più tempo risultando più pesante. Il pulsante Compilazione può essere utile per eseguire il codice senza lanciare il programma a scopo di verificare che esso non presenti errori. Potrebbe essere utile altrimenti compilare solo il progetto corrente).
+
+<img src="images\gestore di eventi.png" width="350" title="creazione progetto WPF">
