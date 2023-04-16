@@ -50,4 +50,96 @@ Si crea una cartella per ogni progetto: la cartella conterrà oltretutto il prog
 
 Tasto destro sulla barra nera in alto a destra->spuntare “Compilazione” (aggiunge due tasti all’interfaccia di visual studio, in questo modo si crea un file eseguibile. Questo comporta che quando si avvia il programma scritto, la compilazione potrebbe richiedere più tempo risultando più pesante. Il pulsante Compilazione può essere utile per eseguire il codice senza lanciare il programma a scopo di verificare che esso non presenti errori. Potrebbe essere utile altrimenti compilare solo il progetto corrente).
 
-<img src="images\gestore di eventi.png" width="350" title="creazione progetto WPF">
+<img src="images\modalita di compilazione.png" width="350" title="creazione progetto WPF">
+
+In xml ogni oggetto è chiuso all’interno di un tag di apertura ed uno di chiusura. All’interno di ogni tag (tra le due parentesi acute) vi sono gli attributi.
+
+E’ possibile vedere in modo specifico le proprietà di un attributo cliccando sul pulsante della chiave inglese e selezionando l’attributo. Le proprietà hanno un tipo che ha lo stesso nome del tag.
+
+Disponi per Nome->WindowStartupLocation->Center of screen (posiziona l’intera finestra al centro dello schermo, disponi per nome ordina le proprietà in base al loro nome in ordine alfabetico).
+
+La sintassi degli attributi di sml è molto precisa, presenta una struttura semplice del tipo nome=”valore”.
+
+## 02/03/2023
+## INTRODUZIONE AI SEMAFORI
+
+Due metodi che incrementano un valore (for) contenuto in una TextBox. Sono indipendenti l’uno dall’altro.
+
+A un certo punto uno dei due contatori si blocca, mentre l’altro riesce a terminare il conteggio.
+
+Abbiamo constatato che non si tratta di un problema di conteggio in quanto uno dei due threads riesce a completare l’azione.
+
+E’ necessario un meccanismo che faccia partire i due contatori per poi eseguire un controllo (semaforo) che entrambi abbiano finito e passare alle prossime operazioni.
+
+Il problema è quindi il fatto che il programma si ferma troppo presto quindi uno dei due processi non riesce a terminare l’operazione.
+
+Caratteristiche dei semafori:
+
+- intero che non può essere negativo
+- ha due funzioni principali: signal (incremento di 1 del contatore), wait (aspetta che il contatore diventi 0). Wait è una procedura bloccante in quanto lascia procedere l’esecuzione solo quando le altre operazioni sono completate.
+
+CountdownEvent => semaforo
+
+```CountdownEvent semaforo = new CountdownEvent (2);```
+
+Abbiamo inizializzato il semaforo fuori dai metodi per poi chiamare il costruttore all’interno del metodo richiamato quando si preme il bottone.
+
+Prima si crea il semaforo con valore 2 per poi bloccarsi => semaforo.Wait();
+
+Abbiamo inoltre introdotto un MessageBox dopo il Wait che indicasse la presenza o meno di eventuali problemi.
+
+Quando i due metodi incrementa finiscono la loro esecuzione, lo segnalano al semaforo.
+
+Abbiamo notato che l'esecuzione dell’intero programma si bloccava, abbiamo perciò proceduto alla comprensione del punto in cui ciò è avvenuto.
+
+Non è possibile utilizzare liberamente un semaforo all’interno di un metodo richiamato a un evento => anche per il semaforo bisogna creare un nuovo thread.
+
+Creazione thread semaforo:
+
+```private void attendi(){
+	semaforo.Wait();
+}
+```
+
+Per creare un nuovo thread si deve creare un nuovo metodo, siccome gli altri metodi (thread) non ritornano alcun valore (void), bisogna trovare un modo per farli comunicare tra di loro.
+Dispatcher.Invoke => aspetta (wait), quando i thread hanno fatto Signal (hanno segnalato il termine della loro esecuzione) aggiorna i due contatori.
+
+```private void attendi(){
+	semaforo.Wait();
+	Dispatcher.Invoke(
+		() =>
+		{
+			Message.Show(“Finito!!”);
+			lbl.Counter1.Text = _counter.ToString();
+			lbl.Counter2.Text = _counter.ToString();
+		}
+	)
+}
+Dispatcher.Invoke è un metodo, tutto ciò che c’è dentro è un parametro.
+() => { … }	=> lambda expression
+
+
+Thread thread = new Thread (
+	() =>			//passaggio di una lambda: il thread3 si deve 
+inizializzare con il codice seguente poi può partire
+	{
+		semaforo.Wait();
+		Dispatcher.Invoke(
+			() =>
+			{
+				MessageBox.Show(“Finito!!”);
+				lbl.Counter1.Text = _counter.ToString();
+				lbl.Counter2.Text = _counter.ToString();
+			}
+		};
+	}
+thread3.Start();
+}```
+
+A questo punto il metodo “attendi” non è più necessario, il vantaggio è la leggibilità del codice.
+
+Cosa succede se si clicca un’altra volta il bottone?
+Il semaforo usato in precedenza viene eliminato, quindi si generano errori. Il bottone non può essere cliccato più volte quando si arriva in fondo ai threads.
+btnGo.IsEnabled = false;
+
+Tramite questo comando il pulsante viene disabilitato momentaneamente. L’abbiamo scritto all’interno di Button_Click .
