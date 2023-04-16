@@ -13,3 +13,5 @@ Si preveda un quarto TextBlock che visualizzi il totale dei tre contatori (alla 
 Si preveda un pulsante "Start" per far partire i conteggi che rimanga disattivato durante il conteggio e si riattivi alla fine
 
 Opzionale: visualizzare il conteggio totale tramite una ProgressBar WPF
+
+<img src="images\creazione progetto WPF.png" width="350" title="creazione progetto WPF">
