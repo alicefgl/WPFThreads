@@ -178,5 +178,6 @@ Abbiamo notato che nonostante questo vincolo rimaneva comunque uno spazio vuoto,
 
 Cartella zippata -> Proprietà -> Annulla blocco (i file che vengono dalla rete non vengono più bloccati come tali, questo può essere utile per evitare complicazioni con Visual Studio).
 Aggiungiamo un thread agli altri due già esistenti, modifichiamo i tempi di esecuzione ed il conteggio che i vari thread eseguiranno.
+
 Aggiungiamo poi un contatore che tenga conto del totale degli altri contatori ed una progress bar che permette di visualizzare l’andamento del totale stabilendo un massimo.
 Prima di consegnare eliminiamo .vs , bin e obj.
